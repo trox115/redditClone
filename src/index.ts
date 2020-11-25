@@ -10,6 +10,7 @@ import {buildSchema} from 'type-graphql';
 import { HelloResolver } from "./resolvers/hello";
 import { PostResolver } from "./resolvers/posts";
 import { SecondHello } from "./resolvers/second";
+import { UserResolver } from "./resolvers/user";
 
 const main = async () => {
     const app = express();
@@ -19,7 +20,7 @@ const main = async () => {
    //await orm.em.persistAndFlush(post);
    const apolloServer = new ApolloServer({
        schema: await buildSchema({
-           resolvers:[HelloResolver ,PostResolver, SecondHello],
+           resolvers:[HelloResolver ,PostResolver, SecondHello, UserResolver],
            validate: false,
        }),
        context: ()=> ({em: orm.em})
